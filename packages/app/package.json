@@ -1,0 +1,24 @@
+{
+    "name": "@orion/app",
+    "version": "1.0.0",
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "build": "yarn clean && yarn copy:resources",
+        "clean": "rm -rf dist",
+        "copy:resources": "mkdir dist/ && cp src/index.html src/main.js src/styles/styles.css dist",
+        "format:check": "prettier *.json *.cjs src/**/*.{js,html} --check",
+        "format:write": "prettier *.json *.cjs src/**/*.{js,html} --write",
+        "lint": "eslint '**/*.js' --max-warnings 0",
+        "dev": "NODE_ENV=dev node src/server.js"
+    },
+    "devDependencies": {
+        "@babel/core": "7.24.0",
+        "@babel/eslint-parser": "7.23.10",
+        "pino-pretty": "10.3.1"
+    },
+    "dependencies": {
+        "@fastify/static": "7.0.1",
+        "fastify": "4.26.2"
+    }
+}
