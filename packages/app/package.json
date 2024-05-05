@@ -6,7 +6,8 @@
     "scripts": {
         "build": "yarn clean && yarn copy:resources",
         "clean": "rm -rf dist",
-        "copy:resources": "mkdir dist/ && cp src/index.html src/main.js dist && yarn copy:css && yarn copy:src",
+        "copy:resources": "mkdir dist/ && cp src/index.html src/main.js dist && yarn copy:css && yarn copy:assets && yarn copy:src",
+        "copy:assets": "cp -R src/assets dist",
         "copy:css": "cp -R src/styles dist",
         "copy:src": "cp -R src/components dist",
         "format:check": "prettier *.json *.cjs src/**/*.{js,html} --check",
