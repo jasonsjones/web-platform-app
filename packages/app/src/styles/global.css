@@ -1,5 +1,9 @@
+:root {
+    --bg-color: #eee;
+}
+
 body {
-    background-color: #eee;
+    background-color: var(--bg-color);
 }
 
 .image-small {
