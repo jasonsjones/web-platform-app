@@ -6,14 +6,16 @@
     "scripts": {
         "build": "yarn clean && yarn copy:resources",
         "clean": "rm -rf dist",
-        "copy:resources": "mkdir dist/ && cp src/index.html src/main.js dist && yarn copy:css && yarn copy:assets && yarn copy:src",
+        "copy:resources": "mkdir dist/ && yarn copy:src && yarn copy:css && yarn copy:assets",
         "copy:assets": "cp -R src/assets dist",
         "copy:css": "cp -R src/styles dist",
-        "copy:src": "cp -R src/components dist",
+        "copy:src": "cp -R src/index.html src/main.js src/components dist",
         "format:check": "prettier *.json *.cjs src/**/*.{js,html} --check",
         "format:write": "prettier *.json *.cjs src/**/*.{js,html} --write",
         "lint": "eslint '**/*.js' --max-warnings 0",
-        "dev": "NODE_ENV=dev node src/server.js"
+        "dev": "concurrently -n Server,Watcher -c magenta,cyan \"yarn dev:server\" \"yarn dev:watch\"",
+        "dev:server": "NODE_ENV=dev node src/server.js",
+        "dev:watch": "node src/file-watcher.js"
     },
     "devDependencies": {
         "@babel/core": "7.24.0",
