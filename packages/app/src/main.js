@@ -1,4 +1,4 @@
-import App from './components/app.js';
+import App from './components/app/app.js';
 
 const APP_NAME = 'x-app';
 const appEl = document.getElementById('webapp');
